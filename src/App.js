@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ArticlesListPage from './pages/ArticlesListPage';
 import ArticlePage from './pages/ArticlePage';
+import NotFoundPage from './pages/NotFoundPage';
 
 // Define the main App component
 function App() {
@@ -16,7 +17,7 @@ function App() {
       <div className="App">
         {/* Render the navigation bar */}
         <NavBar />
-        
+
         {/* Main content area */}
         <div id="page-body">
           <Routes>
@@ -26,6 +27,7 @@ function App() {
             <Route path="/articles" element={<ArticlesListPage />} />
             {/* Dynamic route for individual article pages */}
             <Route path="/articles/:articleId" element={<ArticlePage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 
 import articles from './article-content';
+import NotFoundPage from './NotFoundPage';
 
 const ArticlePage = () => {
     // Extract the articleId parameter from the URL
@@ -8,6 +9,10 @@ const ArticlePage = () => {
 
     // Find the article that matches the articleId
     const article = articles.find(article => article.name === articleId);
+
+    if (!article) {
+        return <NotFoundPage />
+    }
 
     return (
         <>
