@@ -30,5 +30,3 @@ A sleek, dynamic blog platform built with **React**. This project features smoot
    ```
 
 Navigate to `http://localhost:3000` to view the blog.
-
-```
