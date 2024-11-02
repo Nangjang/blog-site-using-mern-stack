@@ -1,32 +1,53 @@
-# Blog Site Using React 📰
+# MERN Blog Site ✍️
 
-A sleek, dynamic blog platform built with **React**. This project features smooth navigation via **React Router** and a modular design for easy content management. Perfect for personal and professional blogging.
+A modern blog platform built with the MERN Stack (MongoDB, Express, React, Node), Firebase Auth for secure login, and Tailwind CSS for responsive design.
 
 ## Features
 
-- **Responsive**: Works across devices
-- **Smooth Navigation**: Powered by React Router
-- **Dynamic Content Loading**: Loads articles on demand
+- Secure user authentication via Firebase
+- CRUD operations for managing blog posts
+- Responsive, clean UI with Tailwind CSS
 
-## Quick Start
+## Tech Stack
+
+- Frontend: React, Tailwind CSS, Firebase Auth
+- Backend: Node, Express, MongoDB
+
+## Setup
 
 1. Clone the repo:
 
-   ```bash
-   git clone https://github.com/Nangjang/blog-site-using-react.git
-   cd blog-site-using-react/blog-site-frontend/
-   ```
+```bash
+git clone https://github.com/Nangjang/blog-site-using-mern-stack.git
+cd blog-site-using-mern-stack
+```
 
 2. Install dependencies:
 
-   ```bash
-   npm install
-   ```
+```bash
+cd blog-site-frontend && npm install # Install frontend dependencies
+cd ../blog-site-backend && npm install # Install backend dependencies
+```
 
-3. Run the development server:
+3. Set up environment variables in each `.env` file:
 
-   ```bash
-   npm start
-   ```
+```plaintext
+MONGODB_URI=<MongoDB URI>
+FIREBASE_API_KEY=<Firebase API Key>
+```
 
-Navigate to `http://localhost:3000` to view the blog.
+4. Run the app:
+
+- Backend: Start the backend server in `/blog-site-backend`:
+
+```bash
+npm run dev
+```
+
+- Frontend: Start the frontend in `/blog-site-frontend`:
+
+```bash
+npm start
+```
+
+5. View the site: Open `http://localhost:3000` in your browser.
