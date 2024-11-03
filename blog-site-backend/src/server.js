@@ -21,24 +21,6 @@ app.get('/hello/:name', (req, res) => {
     res.send(`Hello! ${name}`); // Responds with a personalized greeting
 });
 
-// PUT route to upvote an article by name
-app.put('/api/articles/:name/upvote', (req, res) => {
-    const { name } = req.params; // Destructures the name from params
-
-    // Finds the article object in the articlesInfo array by name
-    const article = articlesInfo.find(a => a.name === name);
-
-    if (!article) {
-        // If the article is not found, respond with an error message
-        res.send('The article doesn\'t exist.');
-    } else {
-        // Increment the upvotes for the found article
-        article.upvotes += 1;
-        // Respond with the updated upvotes count
-        res.send(`The article has ${article.upvotes} upvotes.`);
-    }
-});
-
 // POST route to add a comment to an article by name
 app.post('/api/articles/:name/comment', (req, res) => {
     const { name } = req.params; // Destructures the article name from params
@@ -69,6 +51,26 @@ app.get('/api/articles/:name', async (req, res) => {
 
     if (article) {
         res.json(article);
+    } else {
+        res.sendStatus(404).send('Article Not Found!');
+    }
+});
+
+app.put('/api/articles/:name/upvote', async (req, res) => {
+    const { name } = req.params;
+
+    const client = new MongoClient('mongodb://127.0.0.1:27017');
+    await client.connect();
+
+    const db = client.db('react-blog-db');
+    await db.collection('articles').updateOne({ name }, {
+        $inc: { upvotes: 1 }
+    });
+
+    const article = await db.collection('articles').findOne({ name });
+
+    if (article) {
+        res.send(`${article.upvotes}`);
     } else {
         res.sendStatus(404).send('Article Not Found!');
     }
