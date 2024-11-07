@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import articles from './article-content';
 import NotFoundPage from './NotFoundPage';
+import CommentsList from '../components/CommentsList';
 
 const ArticlePage = () => {
     // Extract the articleId parameter from the URL
@@ -36,6 +37,7 @@ const ArticlePage = () => {
             {article.content.map((paragraph, i) => (
                 <p key={i}>{paragraph}</p> // Render each paragraph
             ))}
+            <CommentsList comments={articleInfo.comments} />
         </>
     );
 }
