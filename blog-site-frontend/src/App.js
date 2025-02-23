@@ -29,6 +29,8 @@ function App() {
             <Route path="/articles" element={<ArticlesListPage />} />
             {/* Dynamic route for individual article pages */}
             <Route path="/articles/:articleId" element={<ArticlePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/create-account" element={<CreateAccountPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
